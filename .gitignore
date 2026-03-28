@@ -316,3 +316,5 @@ pyrightconfig.json
 .gitignore
 
 .idea
+
+db/identifier.sqlite

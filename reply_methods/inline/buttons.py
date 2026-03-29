@@ -1,5 +1,7 @@
 from bot.bot import *
 
-def start_message():
+def InvOrSel():
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton('Eng',callback_data='eng'))
+    markup.add(InlineKeyboardButton('Investor📈',callback_data='I'))
+    markup.add(InlineKeyboardButton('Seller🤝', callback_data='S'))
+    return markup

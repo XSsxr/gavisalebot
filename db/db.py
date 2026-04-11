@@ -9,3 +9,12 @@ cursor = db.cursor()
 def add_hash(hash,ios,tg_id):
     cursor.execute('INSERT INTO verification_code (hash,seller_or_investor,tg_id) VALUES (?,?,?)', (hash,ios,tg_id))
     db.commit()
+
+def get_verification_code(tg_id):
+    cursor.execute('SELECT * FROM verification_code WHERE tg_id =?',(tg_id,))
+    res = cursor.fetchone()
+    if res:
+        return res
+    else:
+        return None
+

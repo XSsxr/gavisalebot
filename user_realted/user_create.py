@@ -1,8 +1,16 @@
-def user_create_account(message,bot,user_tg_id):
-    text = message.text
-    if ',' in text:
-        text_soi = text.split(",",1)[0].strip()
-        text_rest = text.split(",",1)[1].strip()
-        if text_soi == 's' or 'i':
+from db.db import add_waiting
+
+
+def user_create_account(message, bot, user_tg_id, ios):
+    text = (message.text or "").strip().lower()
+
+    if text == "end":
+        add_waiting(user_tg_id, ios)
+
+    else:
+        add_waiting(user_tg_id, ios, text)
+
+    bot.send_message(message.chat.id, "Now just wait to be allowed to use this bot. Youll be notified")
+    return
 
 

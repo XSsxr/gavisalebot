@@ -1,5 +1,5 @@
 from db.db import get_verification_code
-from user_realted.user_create import get_code
+
 
 
 def next_verification_user(message,bot,user_tg_id):
@@ -13,3 +13,5 @@ def next_verification_user(message,bot,user_tg_id):
         return
 
 
+def get_code():
+    return None

@@ -19,13 +19,21 @@ def get_verification_code(tg_id):
         return None
 
 
-def add_waiting(tg_id,com=None):
-    cursor.execute('INSERT INTO waiting (tg_id,comment) VALUES (?)',(tg_id,com))
+def add_waiting(tg_id,soi,com=None):
+    cursor.execute('INSERT INTO waiting (tg_id,SOI,comment) VALUES (?,?,?)',(tg_id,soi,com))
     db.commit()
 
 def get_waiting():
     cursor.execute('SELECT * FROM waiting')
     res = cursor.fetchall()
+    if res:
+        return res
+    else:
+        return None
+
+def is_waiting(tg_id):
+    cursor.execute('SELECT tg_id FROM waiting WHERE tg_id =?',(tg_id,))
+    res = cursor.fetchone()
     if res:
         return res
     else:
